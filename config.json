@@ -1,0 +1,63 @@
+{
+  "profile": {
+    "name": "Digital Time Store",
+    "bio": "Rahasia menghasilkan uang online dengan cara yang benar dan efektif. Cek koleksi ebook premium di bawah! 👇",
+    "image": "https://via.placeholder.com/150",
+    "whatsapp": "6281234567890"
+  },
+  "products": [
+    {
+      "title": "Menghasilkan $300/Hari Menjual Produk Digital - Panduan Lengkap",
+      "price": "Rp 67.000",
+      "image": "https://via.placeholder.com/280x350/667eea/ffffff?text=Ebook+Cover",
+      "link": "https://link-pembelian-ebook-1.com"
+    },
+    {
+      "title": "Strategi Digital Marketing untuk Pemula - Dari Nol ke Hero",
+      "price": "Rp 97.000",
+      "image": "https://via.placeholder.com/280x350/764ba2/ffffff?text=Ebook+Cover+2",
+      "link": "https://link-pembelian-ebook-2.com"
+    },
+    {
+      "title": "Passive Income Blueprint - Cara Menghasilkan Uang Saat Tidur",
+      "price": "Rp 127.000",
+      "image": "https://via.placeholder.com/280x350/f093fb/ffffff?text=Ebook+Cover+3",
+      "link": "https://link-pembelian-ebook-3.com"
+    }
+  ],
+  "links": [
+    {
+      "icon": "📚",
+      "title": "Lihat Semua Ebook",
+      "url": "https://link-katalog-ebook.com"
+    },
+    {
+      "icon": "💬",
+      "title": "Hubungi via WhatsApp",
+      "url": "https://wa.me/6281234567890"
+    },
+    {
+      "icon": "📧",
+      "title": "Subscribe Newsletter",
+      "url": "https://link-newsletter.com"
+    }
+  ],
+  "social": [
+    {
+      "icon": "📘",
+      "url": "https://facebook.com/yourpage"
+    },
+    {
+      "icon": "📷",
+      "url": "https://instagram.com/yourpage"
+    },
+    {
+      "icon": "🐦",
+      "url": "https://twitter.com/yourpage"
+    },
+    {
+      "icon": "▶️",
+      "url": "https://youtube.com/yourchannel"
+    }
+  ]
+}

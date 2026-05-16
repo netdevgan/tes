@@ -1,0 +1,25 @@
+{
+  "profile": {
+    "name": "Emma Johnson",
+    "bio": "This is my secret to earning money online properly and effectively. Check it out below! 👇",
+    "image": "profile.jpeg"
+  },
+  "products": [
+    {
+      "announcement": "This is my secret to earning money online properly and effectively. Check it out below! 👇",
+      "title": "Make $300/Day Selling Digital Products - Complete AI-Powered Guide",
+      "price": "$67",
+      "image": "digital product.png",
+      "link": "https://ladynania.gumroad.com/l/300-day-digital-products"
+    },
+    {
+      "announcement": "Transform your body naturally! Discover the herbal diet secret that actually works. 🌿",
+      "title": "Healthy & Effective Diet Guide - Lose Weight the Right Way",
+      "price": "$47",
+      "image": "diet.jpeg",
+      "link": "https://ladynania.gumroad.com/l/cqwwcm"
+    }
+  ],
+  "links": [],
+  "social": []
+}

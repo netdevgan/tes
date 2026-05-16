@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Time Store</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 480px;
+            width: 100%;
+            background: white;
+            border-radius: 30px;
+            padding: 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: white;
+            padding: 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-section {
+            position: relative;
+            padding-bottom: 40px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            object-position: center;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+        }
+
+        .name {
+            font-size: 36px;
+            font-weight: 800;
+            color: #000;
+            margin: 20px 0 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .bio {
+            font-size: 17px;
+            color: #333;
+            line-height: 1.5;
+            padding: 0 30px;
+            font-weight: 400;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .announcement-box {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 20px 25px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .announcement-box p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .product-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .product-img {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .product-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #000;
+            text-decoration: none;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s;
+            border: 2px solid #e0e0e0;
+            cursor: pointer;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: #000;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 14px;
+        }
+
+        @media (max-width: 480px) {
+            .name {
+                font-size: 28px;
+            }
+            .bio {
+                font-size: 15px;
+            }
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="profile-section">
+                <img src="profile.jpeg" alt="Profile" class="profile-img">
+            </div>
+            <h1 class="name">Emma Johnson</h1>
+            <p class="bio">This is my secret to earning money online properly and effectively. Check it out below! 👇</p>
+        </div>
+
+        <div class="content">
+            <!-- Products will be loaded here -->
+        </div>
+
+        <div class="footer">
+            © 2024 Digital Time Store. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        // Load data from data.json
+        window.addEventListener('DOMContentLoaded', async function() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                
+                // Update profile
+                if (data.profile) {
+                    if (data.profile.name) {
+                        document.querySelector('.name').textContent = data.profile.name;
+                    }
+                    if (data.profile.bio) {
+                        document.querySelector('.bio').textContent = data.profile.bio;
+                    }
+                    if (data.profile.image) {
+                        document.querySelector('.profile-img').src = data.profile.image;
+                    }
+                }
+
+                // Update products
+                if (data.products && data.products.length > 0) {
+                    const contentDiv = document.querySelector('.content');
+                    const productsHTML = data.products.map(product => `
+                        ${product.announcement ? `
+                        <div class="announcement-box">
+                            <p>${product.announcement}</p>
+                        </div>
+                        ` : ''}
+                        <div class="product-card">
+                            <img src="${product.image}" alt="${product.title}" class="product-img">
+                            <h3 class="product-title">${product.title}</h3>
+                            <p class="product-price">${product.price}</p>
+                            <a href="${product.link}" target="_blank" class="btn">Buy Now</a>
+                        </div>
+                    `).join('');
+                    
+                    contentDiv.innerHTML = productsHTML;
+                }
+
+            } catch (error) {
+                console.log('Using default content');
+            }
+        });
+    </script>
+</body>
+</html>
