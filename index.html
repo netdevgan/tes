@@ -46,19 +46,23 @@
             position: relative;
             padding-bottom: 40px;
         }
-
-        .profile-img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            object-position: center;
-            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+        .profile-section {
+            position: relative;
+            padding: 40px 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .name {
-            font-size: 36px;
-            font-weight: 800;
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            border: 4px solid #f0f0f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }   font-weight: 800;
             color: #000;
             margin: 20px 0 15px;
             letter-spacing: -0.5px;
@@ -179,7 +183,7 @@
                 <img src="profile.jpeg" alt="Profile" class="profile-img">
             </div>
             <h1 class="name">Emma Johnson</h1>
-           
+            <p class="bio">This is my secret to earning money online properly and effectively. Check it out below! 👇</p>
         </div>
 
         <div class="content">
