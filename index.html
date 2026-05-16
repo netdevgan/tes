@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Time Store</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
         
@@ -38,6 +40,10 @@
             padding: 0;
             text-align: center;
             position: relative;
+        }
+
+        .theme-toggle {
+            display: none;
         }
 
         .profile-section {
@@ -148,11 +154,95 @@
             border-color: #000;
         }
 
+        .link-button {
+            display: block;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            padding: 18px 30px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            border: 2px solid #e0e0e0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .link-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: #667eea;
+        }
+
+        .link-button .icon {
+            width: 20px;
+        <div class="content">
+            <!-- Announcement Box 1 -->
+            <div class="announcement-box">
+                <p>This is my secret to earning money online properly and effectively. Check it out below! 👇</p>
+            </div>
+
+            <!-- Product Card 1 -->
+            <div class="product-card">
+                <img src="digital product.png" alt="Digital Products Ebook" class="product-img">
+                <h3 class="product-title">Make $300/Day Selling Digital Products - Complete AI-Powered Guide</h3>
+                <p class="product-price">$67</p>
+                <a href="https://ladynania.gumroad.com/l/300-day-digital-products" target="_blank" class="btn">Buy Now</a>
+            </div>
+
+            <!-- Announcement Box 2 -->
+            <div class="announcement-box">
+                <p>Transform your body naturally! Discover the herbal diet secret that actually works. 🌿</p>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="product-card">
+                <img src="diet.jpeg" alt="Diet Ebook" class="product-img">
+                <h3 class="product-title">Healthy & Effective Diet Guide - Lose Weight the Right Way</h3>
+                <p class="product-price">$47</p>
+                <a href="https://ladynania.gumroad.com/l/cqwwcm" target="_blank" class="btn">Buy Now</a>
+            </div>
+        </div>roke: #667eea;
+        }
+
+        .social-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: #667eea;
+        }
+
         .footer {
             text-align: center;
             padding: 20px;
             color: #999;
             font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 20px;
+            transition: transform 0.2s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
         }
 
         @media (max-width: 480px) {
@@ -179,11 +269,26 @@
         </div>
 
         <div class="content">
-            <!-- Products will be loaded here -->
+            <!-- Product Card 1 -->
+            <div class="product-card">
+                <img src="digital product.png" alt="Digital Products Ebook" class="product-img">
+                <h3 class="product-title">Make $300/Day Selling Digital Products - Complete AI-Powered Guide</h3>
+                <p class="product-price">$67</p>
+                <a href="https://ladynania.gumroad.com/l/300-day-digital-products" target="_blank" class="btn">Buy Now</a>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="product-card">
+                <img src="diet.jpeg" alt="Diet Ebook" class="product-img">
+                <h3 class="product-title">Healthy & Effective Diet Guide - Lose Weight the Right Way</h3>
+                <p class="product-price">$47</p>
+                <a href="https://ladynania.gumroad.com/l/cqwwcm" target="_blank" class="btn">Buy Now</a>
+            </div>
+
         </div>
 
         <div class="footer">
-            © 2024 Digital Time Store. All rights reserved.
+            © 2026 Digital Time Store. All rights reserved.
         </div>
     </div>
 
@@ -224,7 +329,65 @@
                         </div>
                     `).join('');
                     
-                    contentDiv.innerHTML = productsHTML;
+                    // Replace existing products
+                    const firstProduct = contentDiv.querySelector('.product-card');
+                    if (firstProduct) {
+                        const allProducts = contentDiv.querySelectorAll('.product-card');
+                        allProducts.forEach(p => p.remove());
+                        // Remove old announcement boxes
+                        const oldAnnouncements = contentDiv.querySelectorAll('.announcement-box');
+                        oldAnnouncements.forEach(a => a.remove());
+                        const firstLink = contentDiv.querySelector('.link-button');
+                        firstLink.insertAdjacentHTML('beforebegin', productsHTML);
+                    }
+                }
+
+                // Update links
+                if (data.links && data.links.length > 0) {
+                    const linksHTML = data.links.map(link => `
+                        <a href="${link.url}" target="_blank" class="link-button">
+                            <span style="margin-right: 10px; font-size: 20px;">${link.icon}</span>
+                            ${link.title}
+                        </a>
+                    `).join('');
+                    
+                    const socialLinks = document.querySelector('.social-links');
+                    const existingLinks = document.querySelectorAll('.link-button');
+                    existingLinks.forEach(l => l.remove());
+                    socialLinks.insertAdjacentHTML('beforebegin', linksHTML);
+                }
+
+            } catch (error) {
+                console.log('Using default content');
+                // Update products
+                if (data.products && data.products.length > 0) {
+                    const contentDiv = document.querySelector('.content');
+                    const productsHTML = data.products.map(product => `
+                        ${product.announcement ? `
+                        <div class="announcement-box">
+                            <p>${product.announcement}</p>
+                        </div>
+                        ` : ''}
+                        <div class="product-card">
+                            <img src="${product.image}" alt="${product.title}" class="product-img">
+                            <h3 class="product-title">${product.title}</h3>
+                            <p class="product-price">${product.price}</p>
+                            <a href="${product.link}" target="_blank" class="btn">Buy Now</a>
+                        </div>
+                    `).join('');
+                    
+                    // Replace existing products
+                    const firstProduct = contentDiv.querySelector('.product-card');
+                    if (firstProduct) {
+                        const allProducts = contentDiv.querySelectorAll('.product-card');
+                        allProducts.forEach(p => p.remove());
+                        // Remove old announcement boxes
+                        const oldAnnouncements = contentDiv.querySelectorAll('.announcement-box');
+                        oldAnnouncements.forEach(a => a.remove());
+                        
+                        // Insert products at the end of content
+                        contentDiv.insertAdjacentHTML('beforeend', productsHTML);
+                    }
                 }
 
             } catch (error) {
@@ -232,5 +395,3 @@
             }
         });
     </script>
-</body>
-</html>
